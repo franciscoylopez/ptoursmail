@@ -1,0 +1,1002 @@
+Delivered-To: francisco+productours@pickaso.com
+Received: by 2002:a05:6504:13a6:0:0:0:0 with SMTP id c6csp341487lto;
+        Fri, 30 Aug 2019 01:12:31 -0700 (PDT)
+X-Received: by 2002:a62:34c4:: with SMTP id b187mr16954924pfa.161.1567152511098;
+        Fri, 30 Aug 2019 01:08:31 -0700 (PDT)
+X-Google-Smtp-Source: APXvYqzxcQugfLXlnxdqE6yg9+IFbSBKOQRRgBgWqB4cAD/kl/y+GIQVK4RXILd0uasalX38Hm08
+X-Received: by 2002:a62:34c4:: with SMTP id b187mr16954804pfa.161.1567152509556;
+        Fri, 30 Aug 2019 01:08:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1567152509; cv=none;
+        d=google.com; s=arc-20160816;
+        b=k7Sjw+hOZzGHzdfdX1M7sxgatVYx0M1duxbZu+MrJbrTvpkPIw8s9sjVmAPR8BWVUf
+         JU5Bt8Y1PSume2LFdHMWIsHA9yfGJ5GYLzlb2h+NbnpdyUgtwrakX/DJYh8LLBWilWjS
+         EmK7nLuuMhBgTJMZAmgxRpDvw2ihjPEk4AvNFLxo9UNeVwbXdgcGoD8PcfekLFjmgYk+
+         r0lBN+OpxpAse/no+jYqb1UGw9OoW/YkUN4VVK9uwPgkfSufveRdxCNHgIuKPEyJWCAQ
+         EvQzL9Od52Rj+VygJmAz5wGeD6xmPZj8ITrMZ/GUVg6o1kwTqaiuXCcMUjuSkRJxK0v9
+         2Grg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=date:list-unsubscribe:from:message-id:subject:reply-to:mime-version
+         :to:dkim-signature;
+        bh=j5y+XmuLFppNUKakkMxsZl50D83aB02Ezt9amIaSzHI=;
+        b=WiOm39O1MGEwzTN3qO9fhcNH+z+uVxQ8uaICcTpVQP6ZZ1A9k8rUw0PFoT8SVFlySV
+         Ki6g7fLOlW9g5b6W0SO4ipjhL1Sl26fXNrNkvUGzSDCLzO6UJLBHBPOyJTFxGl2vf1ui
+         bMHSfck18zd555pHqHgLhvUUOy9kaCG2Z//O72ZSQFNBrixWKUpX6TkpZQ6MszTzcVd6
+         KmuyllVlnOPwJL/ULQZlMIQ1O2UA3SBJGeZ5liz46DMb4eA0cdc4TAcjdGr36x2LeeOn
+         AAn1mNNTDV5K+d19IW0d7x8OMLwX8OgLH2XWXIudDCX5jnvvwHnM5cvgzh8rybqOuSiM
+         dK1Q==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@thetool.intercom-mail.com header.s=intercom header.b=eIn8V5JC;
+       spf=pass (google.com: domain of bounces+23461377850@rp.thetool.intercom-mail.com designates 52.27.255.199 as permitted sender) smtp.mailfrom=bounces+23461377850@rp.thetool.intercom-mail.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=intercom-mail.com
+Return-Path: <bounces+23461377850@rp.thetool.intercom-mail.com>
+Received: from mta1a4.spe.intercom-mail.com (mta1a4.spe.intercom-mail.com. [52.27.255.199])
+        by mx.google.com with ESMTPS id f10si5500191pfq.194.2019.08.30.01.08.29
+        for <francisco+productours@pickaso.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Fri, 30 Aug 2019 01:08:29 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+23461377850@rp.thetool.intercom-mail.com designates 52.27.255.199 as permitted sender) client-ip=52.27.255.199;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@thetool.intercom-mail.com header.s=intercom header.b=eIn8V5JC;
+       spf=pass (google.com: domain of bounces+23461377850@rp.thetool.intercom-mail.com designates 52.27.255.199 as permitted sender) smtp.mailfrom=bounces+23461377850@rp.thetool.intercom-mail.com;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=intercom-mail.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=thetool.intercom-mail.com; s=intercom; t=1567152508; i=@thetool.intercom-mail.com; bh=j5y+XmuLFppNUKakkMxsZl50D83aB02Ezt9amIaSzHI=; h=To:Content-Type:Subject:Message-ID:From:Date; b=eIn8V5JCan1174Kn6uxOougW+XiFKOS7bM4xt1+vxLX/Sv0u911emudkC17lqEi4O
+	 QWTQxrPUG1OuhCnLPDWd638gikFjy5C0bDC1rIoWJKCCjLPVfppS5CBp+sd3bXLKxV
+	 4H1hYbKKk4a5pZM3CHUvKnr4k09PYH3PPG7nQjdk=
+X-MSFBL: jvZTcxwTXjUG+7jPVwkv0zjxsFnFGGBYCXctatUgkgQ=|eyJyIjoiZnJhbmNpc2N vK3Byb2R1Y3RvdXJzQHBpY2thc28uY29tIiwidGVuYW50X2lkIjoiaW50ZXJjb20 iLCJjdXN0b21lcl9pZCI6IjEiLCJzdWJhY2NvdW50X2lkIjoiNDQ1ODUiLCJtZXN zYWdlX2lkIjoiMDAxZTdjZDk2ODVkYWIyNmQ2MTEifQ==
+To: francisco+productours@pickaso.com
+Content-Type: multipart/alternative; boundary="_----fs2n9Zejark53516HS7jmw===_9B/11-09899-C79D86D5"
+MIME-Version: 1.0
+X-Mailgun-Variables: {"app_id":"nt2yyt55","conversation_id":"23461377850","intercom_message_id":208642798,"user_id":"5d68d978932b4e7a29e3a486"}
+X-Auto-Response-Suppress: OOF, AutoReply
+Reply-To: Daniel from TheTool <daniel.peris@thetool.intercom-mail.com>
+X-Mailgun-Tag: user-personal-new
+X-Intercom-App-Id: nt2yyt55
+X-Intercom-Bin: 300
+Subject: Welcome to TheTool 🚀
+Message-ID: <c334fd97-15a207db-1567152508-23461377850@thetool.intercom-mail.com>
+X-Mailgun-Track-Clicks: no
+From: Daniel from TheTool <daniel.peris@thetool.intercom-mail.com>
+X-Mailgun-Track-Opens: no
+List-Unsubscribe: <mailto:unsubscribe_23461377850_5d68d978932b4e7a29e3a486@thetool.intercom-mail.com>, <https://thetool.intercom-mail.com/subscriptions/unsubscribe?app_id=nt2yyt55&conversation_id=23461377850&user_id=5d68d978932b4e7a29e3a486>
+Date: Fri, 30 Aug 2019 08:08:28 +0000
+
+--_----fs2n9Zejark53516HS7jmw===_9B/11-09899-C79D86D5
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi human being!=20
+ First of all, THANK YOU for joining TheTool =F0=9F=9A=80=C2=A0=20
+ Now you are part of our ASO community with 24,000+ users. Are you ready to=
+ start your trial with us? =F0=9F=98=8F Sure you are! Getting started is re=
+ally simple, just follow these steps:=20
+ [Image "Screen+Shot+2018-05-29+at+13.38.55.png"] GO TO DASHBOARD =E2=86=92=
+ Our platform helps with your ASO to increase downloads and make the most o=
+f your mobile business. Let's do it together.=20
+ I recommend you to read these 3 articles of our blog: =F0=9F=94=B9 Apple A=
+pp Store ASO Guide 2019 =F0=9F=94=B9 Google Play ASO Guide 2019 =F0=9F=94=
+=B9 Meet the main ASO KPI's and Metrics And please, if you have any feedbac=
+k, don't hesitate to get in touch by emailing me (daniel@thetool.io) or hit=
+ting reply =F0=9F=92=AA=C2=A0=20
+ Daniel Peris, CEO &amp; Founder at TheTool
+--_----fs2n9Zejark53516HS7jmw===_9B/11-09899-C79D86D5
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w=
+3.org/TR/REC-html40/loose.dtd">
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8">
+<style type=3D"text/css">
+  #PreviewIntercomModal .ic_message_content h1,
+  #PreviewIntercomModal .ic_message_content h2 {
+    color: #0072b0 !important;
+  }
+  #PreviewIntercomModal .ic_message_without_image > .ic_message_internals >=
+ .ic_message_content {
+    border-color: #0072b0 !important;
+  }
+  #PreviewIntercomModal .ic_user_comment_body {
+    background-color: #0072b0 !important;
+    border-color: #0072b0 !important;
+  }
+  #PreviewIntercomModal .ic_message_content a {
+    color: #0072b0 !important;
+  }
+  #PreviewIntercomModal .ic_message_content a:hover {
+    color: #0072b0 !important;
+  }
+  #PreviewIntercomModal .ic_user_comment_body {
+    background-color: #0072b0 !important;
+    border-color: #0072b0 !important;
+  }
+  .intercom-h2b-button br {
+    display: none;
+  }
+</style>
+<style type=3D"text/css" data-premailer=3D"ignore">
+  /* styles in here will not be inlined. Use for media queries etc */
+  /* force Outlook to provide a "view in browser" menu link. */
+  #outlook a {padding:0;}
+  /* prevent Webkit and Windows Mobile platforms from changing default font=
+ sizes.*/
+  body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-=
+adjust:100%; margin:0; padding:0;}
+  /* force Hotmail to display emails at full width */
+  .ExternalClass {width:100%;}
+  /* force Hotmail to display normal line spacing. http://www.emailonacid.c=
+om/forum/viewthread/43/ */
+  .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass fon=
+t, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+  /* fix a padding issue on Outlook 07, 10 */
+  table td {border-collapse: collapse;}
+  table {
+    table-layout: fixed;
+  }
+
+  @media only screen and (max-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11px !important;
+    }
+  }
+  @media only screen and (max-device-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11px !important;
+    }
+  }
+</style>
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  /* styles in here will not be inlined. Use for media queries etc */
+  /* force Outlook to provide a "view in browser" menu link. */
+  #outlook a {padding:0;}
+  /* prevent Webkit and Windows Mobile platforms from changing default font=
+ sizes.*/
+  body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-=
+adjust:100%; margin:0; padding:0;}
+  /* force Hotmail to display emails at full width */
+  .ExternalClass {width:100%;}
+  /* force Hotmail to display normal line spacing. http://www.emailonacid.c=
+om/forum/viewthread/43/ */
+  .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass fon=
+t, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+  /* fix a padding issue on Outlook 07, 10 */
+  table td {border-collapse: collapse;}
+
+  @media only screen and (max-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11px !important;
+    }
+  }
+  @media only screen and (max-device-width: 480px)
+  {
+    br.hidden { display: block !important; }
+    td.padding_cell { display: none !important; }
+    table.message_footer_table td {
+      font-size: 11px !important;
+    }
+  }
+</style>
+
+<style type=3D"text/css">
+
+  .admin_name b {
+    color: #6f6f6f;
+  }
+
+  .date_cell a {
+    color: #999999;
+  }
+
+  .comment_header_td {
+    width: 100%;
+    background: #ff8800;
+    border: none;
+    font-family: 'Helvetica Neue',Arial,sans-serif
+  }
+
+  .content-td {
+    color: #525252;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .content-td h1 {
+    font-size: 26px;
+    line-height: 33px;
+    color: #282F33;
+    margin-bottom: 7px;
+    margin-top: 30px;
+    font-weight: normal;
+  }
+
+  .content-td h1 a {
+    color: #282F33;
+  }
+
+  .content-td h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #282F33;
+    margin: 30px 0 7px;
+  }
+
+  .content-td h2 a {
+    color: #282F33;
+  }
+
+  .content-td h1 + h2 {
+    margin-top: 0 !important;
+  }
+
+  .content-td h2 + h1 {
+    margin-top: 0 !important;
+  }
+
+  .content-td h3 ,
+  .content-td h4 ,
+  .content-td h5 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .content-td p {
+    margin: 0 0 17px 0;
+    line-height: 1.5;
+  }
+
+  .content-td p img,
+  .content-td h1 img,
+  .content-td h2 img,
+  .content-td li img,
+  .content-td .intercom-h2b-button img {
+    margin: 0;
+    padding: 0;
+  }
+
+  .content-td a {
+    color: #1251ba;
+  }
+
+  .content-td p.intro {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .content-td blockquote {
+    margin: 40px 0;
+    font-style: italic;
+    color: #8C8C8C;
+    font-size: 18px;
+    text-align: center;
+    padding: 0 30px;
+    font-family: Georgia, sans-serif;
+    quotes: none;
+  }
+
+  .content-td blockquote a {
+    color: #8C8C8C;
+  }
+
+  .content-td ul {
+    list-style: disc;
+    margin: 0 0 20px 40px;
+    padding: 0;
+  }
+
+  .content-td ol {
+    list-style: decimal;
+    margin: 0 0 20px 40px;
+    padding: 0;
+  }
+
+  .content-td img {
+    margin: 17px 0;
+    max-width: 100%;
+  }
+
+  .content-td .intercom-container {
+    margin-bottom: 16px;
+  }
+
+  .content-td hr {
+    border: none;
+    border-top: 1px solid #DDD;
+    border-bottom: 0;
+    margin: 50px 30% 50px 30%;
+  }
+
+  /**/
+  .content-td pre {
+    margin: 0 0 10px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    overflow: auto;
+  }
+
+  .content-td pre code {
+    font-family: Courier, monospace;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  table.intercom-container {
+    margin: 17px 0;
+  }
+  table.intercom-container.intercom-align-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  table.intercom-container td {
+    background-color: #ff8800;
+    padding: 12px 35px;
+    border-radius: 3px;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 0;
+  }
+
+  .content-td .intercom-h2b-button {
+    font-size: 14px;
+    color: #FFF;
+    font-weight: bold;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ff8800;
+    border: none !important;
+   =20
+  }
+
+  a.intercom-h2b-button {
+    background-color: #0E4595;
+    border-radius: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
+    color:#fff;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    min-height: 20px;
+    text-decoration: none;
+  }
+
+  .content-td .intercom-h2b-button:hover {
+    background-color:#ff9c2b;
+  }
+
+  .message_footer_table .avatar {
+    -ms-interpolation-mode: bicubic;
+    -webkit-background-clip: padding-box;
+    -webkit-border-radius: 20px;
+    background-clip: padding-box;
+    border-radius: 20px;
+    display: inline-block;
+    height: 40px;
+    max-width: 100%;
+    outline: none;
+    text-decoration: none;
+    width: 40px;
+  }
+
+  .powered-by-table .powered-by-text a {
+    font-weight: bold;
+    text-decoration: none;
+    color: #999;
+  }
+
+  .main_wrapper {
+    padding: 0 20px;
+  }
+
+  .margin-arrow {
+    display: none;
+   =20
+    visibility:hidden;
+    width:0;
+    height:0;
+    max-width: 0;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+  }
+
+  .content-td > :first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+</style>
+
+<!-- Responsive-->
+<style type=3D"text/css" data-premailer=3D"ignore">
+
+  @media screen and (max-width: 635px) {
+    .main-wrap {
+      width: 100% !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .content-td {
+      padding: 30px 15px !important;
+    }
+    .content-td h1 {
+      margin-bottom: 5px;
+    }
+    .message_footer_table .space {
+      width: 20px !important;
+    }
+
+    .message_footer_table .arrow-wrap {
+      padding-left: 20px !important;
+    }
+
+    .message_footer_table .admin_name b{
+      display: block !important;
+    }
+
+    .main_wrapper {
+      padding: 0;
+    }
+
+    .image-arrow {
+      display: none !important;
+    }
+
+    .margin-arrow {
+      display: table !important;
+      visibility:visible !important;
+      width: 100% !important;
+      height: auto !important;
+      max-width: none !important;
+      max-height: none !important;
+      opacity: 1 !important;
+      overflow: visible !important;
+    }
+
+    .comment_body {
+      border-bottom: 1px solid #DDD !important;
+    }
+
+    .footer-td-wrapper {
+      display: block !important;
+      width: 100% !important;
+      text-align: left !important;
+    }
+    .footer-td-wrapper .date_cell {
+      text-align: left !important;
+      padding: 15px 0 0 20px !important;
+    }
+  }
+
+</style>
+
+
+<style type=3D"text/css" data-premailer=3D"ignore">
+  .content-td blockquote + * {
+    margin-top: 20px !important;
+  }
+
+  .ExternalClass .content-td h1 {
+    padding: 20px 0 !important;
+  }
+
+  .ExternalClass .content-td h2 {
+    padding: 0 0 5px !important;
+  }
+
+  .ExternalClass .content-td p {
+    padding: 10px 0 !important;
+  }
+
+.ExternalClass .content-td .intercom-container {
+    padding: 5px 0 !important;
+  }
+
+  .ExternalClass .content-td hr + * {
+    padding-top: 30px !important;
+  }
+
+  .ExternalClass .content-td ol ,
+  .ExternalClass .content-td ul {
+    padding: 0 0 20px 40px !important;
+    margin: 0 !important;
+  }
+
+  .ExternalClass .content-td ol li,
+  .ExternalClass .content-td ul li {
+    padding: 3px 0 !important;
+    margin: 0 !important;
+  }
+  .content-td > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  .ExternalClass .content-td > :first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+</style>
+
+
+
+<style type=3D"text/css">
+  .intercom-align-right {
+  text-align: right !important;
+}
+.intercom-align-center {
+  text-align: center !important;
+}
+.intercom-align-left {
+  text-align: left !important;
+}
+/* Over-ride for RTL */
+.right-to-left .intercom-align-right{
+  text-align: left !important;
+}
+.right-to-left .intercom-align-left{
+  text-align: right !important;
+}
+.right-to-left .intercom-align-left {
+  text-align:right !important;
+}
+.right-to-left li {
+  text-align:right !important;
+  direction: rtl;
+}
+.right-to-left .intercom-align-left img,
+.right-to-left .intercom-align-left .intercom-h2b-button {
+  margin-left: 0 !important;
+}
+.intercom-attachment,
+.intercom-attachments,
+.intercom-attachments td,
+.intercom-attachments th,
+.intercom-attachments tr,
+.intercom-attachments tbody,
+.intercom-attachments .icon,
+.intercom-attachments .icon img {
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+.intercom-attachments {
+  margin: 10px 0 !important;
+}
+.intercom-attachments .icon,
+.intercom-attachments .icon img {
+  width: 16px !important;
+  height: 16px !important;
+}
+.intercom-attachments .icon {
+  padding-right: 5px !important;
+}
+.intercom-attachment {
+  display: inline-block !important;
+  margin-bottom: 5px !important;
+}
+
+.intercom-interblocks-content-card {
+  width: 334px !important;
+  max-height: 136px !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  border-radius: 20px !important;
+  font-size: 16px !important;
+  border: 1px solid #e0e0e0 !important;
+}
+
+.intercom-interblocks-link,
+.intercom-interblocks-article-card {
+  text-decoration: none !important;
+}
+
+.intercom-interblocks-article-icon {
+  width: 22.5% !important;
+  height: 136px !important;
+  float: left !important;
+  background-color: #fafafa !important;
+  background-image: url('https://thetool.intercom-mail.com/assets/article_b=
+ook-1a595be287f73c0d02f548f513bfc831.png') !important;
+  background-repeat: no-repeat !important;
+  background-size: 32px !important;
+  background-position: center !important;
+}
+
+.intercom-interblocks-article-text {
+  width: 77.5% !important;
+  float: right !important;
+  background-color: #fff !important;
+}
+
+.intercom-interblocks-link-title,
+.intercom-interblocks-article-title {
+  color: #519dd4 !important;
+  font-size: 15px !important;
+  margin: 16px 18px 12px !important;
+  line-height: 1.3em !important;
+  overflow: hidden !important;
+}
+
+.intercom-interblocks-link-description,
+.intercom-interblocks-article-body {
+  margin: 0 18px 12px !important;
+  font-size: 14px !important;
+  color: #65757c !important;
+  line-height: 1.3em !important;
+}
+
+.intercom-interblocks-link-author,
+.intercom-interblocks-article-author {
+  margin: 10px 15px !important;
+  height: 24px !important;
+  line-height: normal !important;
+}
+
+.intercom-interblocks-link-author-avatar,
+.intercom-interblocks-article-author-avatar {
+  width: 16px !important;
+  height: 16px !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  float: left;
+  margin-right: 5px;
+}
+
+.intercom-interblocks-link-author-avatar-image,
+.intercom-interblocks-article-author-avatar-image {
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 50% !important;
+  margin: 0 !important;
+  vertical-align: top !important;
+  font-size: 12px !important;
+}
+
+.intercom-interblocks-link-author-name,
+.intercom-interblocks-article-author-name {
+  color: #74848b !important;
+  margin: 0 0 0 5px !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  overflow: hidden !important;
+}
+
+.intercom-interblocks-article-written-by {
+  color: #8897a4 !important;
+  margin: 1px 0 0 5px !important;
+  font-size: 12px !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  float: left !important;
+}
+
+</style>
+
+
+
+
+</head>
+<body>
+
+
+<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=3D"bgtc perso=
+nal" align=3D"center" style=3D"background-color: #f9f9f9; border-collapse: =
+collapse; line-height: 100% !important; margin: 0; padding: 0; width: 100% =
+!important" bgcolor=3D"#f9f9f9">
+  <tbody>
+<tr>
+    <td>
+    <!--[if (gte mso 10)]>
+      <tr>
+      <td>
+      <table style=3D"width: 600px">
+    <![endif]-->
+      <table style=3D"border-collapse: collapse; margin: auto; max-width: 6=
+35px; min-width: 320px; width: 100%" class=3D"main-wrap">
+        <tbody>
+<tr>
+          <td valign=3D"top">
+            <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=
+=3D"reply_header_table" style=3D"border-collapse: collapse; color: #c0c0c0;=
+ font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 13px; line-heig=
+ht: 26px; margin: 0 auto 26px; width: 100%">
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td valign=3D"top" class=3D"main_wrapper" style=3D"padding: 0 20p=
+x">
+
+            <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" class=
+=3D"comment_wrapper_table admin_comment" align=3D"center" style=3D"-webkit-=
+background-clip: padding-box; -webkit-border-radius: 3px; background-clip: =
+padding-box; border-collapse: collapse; border-radius: 3px; color: #545454;=
+ font-family: 'Helvetica Neue',Arial,sans-serif; font-size: 13px; line-heig=
+ht: 20px; margin: 0 auto; width: 100%">
+              <tbody>
+<tr>
+                <td valign=3D"top" class=3D"comment_wrapper_td">
+                  <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" c=
+lass=3D"comment_header" style=3D"border: none; border-collapse: separate; f=
+ont-size: 1px; height: 2px; line-height: 3px; width: 100%">
+                    <tbody>
+<tr>
+                      <td valign=3D"top" class=3D"comment_header_td" style=
+=3D"background-color: #ff8800; border: none; font-family: 'Helvetica Neue',=
+Arial,sans-serif; width: 100%" bgcolor=3D"#ff8800">=C2=A0</td>
+                    </tr>
+                  </tbody>
+</table>
+                  <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" c=
+lass=3D"comment_body" style=3D"-webkit-background-clip: padding-box; -webki=
+t-border-radius: 0 0 3px 3px; background-clip: padding-box; border-collapse=
+: collapse; border-color: #dddddd; border-radius: 0 0 3px 3px; border-style=
+: solid solid none; border-width: 0 1px 1px; width: 100%">
+                    <tbody>
+<tr>
+                      <td class=3D"comment_body_td content-td" style=3D"-we=
+bkit-background-clip: padding-box; -webkit-border-radius: 0 0 3px 3px; back=
+ground-clip: padding-box; background-color: white; border-radius: 0 0 3px 3=
+px; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05); color: #525252; font-famil=
+y: 'Helvetica Neue',Arial,sans-serif; font-size: 15px; line-height: 22px; o=
+verflow: hidden; padding: 40px 40px 30px" bgcolor=3D"white">
+                       =20
+
+                       =20
+                          <p class=3D"intercom-align-left" style=3D"line-he=
+ight: 1.5; margin: 0 0 17px; padding-top: 0; text-align: left !important" a=
+lign=3D"left">Hi human being!</p>
+<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17p=
+x; text-align: left !important" align=3D"left">First of all, <b>THANK YOU</=
+b> for joining TheTool <img src=3D"https://thetool.intercom-mail.com/images=
+/emojis/32x32/1f680.png" width=3D"16" height=3D"16" alt=3D"rocket" class=3D=
+"ic_emoji_img" style=3D"height: 16px; margin: 0; max-width: 16px; min-heigh=
+t: 16px; padding: 0; width: 16px">=C2=A0</p>
+<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17p=
+x; text-align: left !important" align=3D"left">Now you are part of our ASO =
+community with 24,000+ users. <br>Are you ready to start your trial with us=
+? <img src=3D"https://thetool.intercom-mail.com/images/emojis/32x32/1f60f.p=
+ng" width=3D"16" height=3D"16" alt=3D"smirk" class=3D"ic_emoji_img" style=
+=3D"height: 16px; margin: 0; max-width: 16px; min-height: 16px; padding: 0;=
+ width: 16px"> Sure you are! <br><br>Getting started is really simple, just=
+ <b>follow these steps</b>:</p>
+<div class=3D"intercom-container intercom-align-left" style=3D"margin-botto=
+m: 16px; text-align: left !important" align=3D"left"><img src=3D"https://th=
+etool.intercom-mail.com/i/o/61183197/afa8a314adedad590496f7a0/Screen+Shot+2=
+018-05-29+at+13.38.55.png" style=3D"margin: 17px 0; max-width: 100%"></div>
+<table class=3D"intercom-container intercom-align-center" align=3D"center" =
+style=3D"margin: 17px auto 16px; text-align: center !important"><tbody><tr>=
+<td style=3D"background-color: #ff8800; border-radius: 3px; font-family: He=
+lvetica, Arial, sans-serif; margin: 0; padding: 12px 35px" bgcolor=3D"#ff88=
+00"><a class=3D"intercom-h2b-button" target=3D"_blank" href=3D"https://thet=
+ool.intercom-mail.com/via/e?ob=3D8c6PGX3BsO81NTPNP7hp2nfkldbZt8W0zo5b%2FN7M=
+xSwfXGQTcnUd39OPiFEqDHtg&h=3D1b9fb0fc33eb95ba4f54a6b9c70f4e5f9847fe2b-23461=
+377850&l=3D67eb5a020240758cb29a0de672743cacb3f10f27-813137" style=3D"backgr=
+ound-color: #ff8800; border: 1px none rgba(0,0,0,0.2); border-radius: 5px; =
+color: #FFF; display: inline-block; font-size: 14px; font-weight: bold; min=
+-height: 20px; text-decoration: none">GO TO DASHBOARD =E2=86=92</a></td></t=
+r></tbody></table>
+<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17p=
+x; text-align: left !important" align=3D"left">Our platform helps with your=
+ ASO to <b>increase downloads and make the most of your mobile business</b>=
+. Let's do it together.</p>
+<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17p=
+x; text-align: left !important" align=3D"left">I recommend you to read thes=
+e 3 articles of our blog:<br><br><img src=3D"https://thetool.intercom-mail.=
+com/images/emojis/32x32/1f539.png" width=3D"16" height=3D"16" alt=3D"small_=
+blue_diamond" class=3D"ic_emoji_img" style=3D"height: 16px; margin: 0; max-=
+width: 16px; min-height: 16px; padding: 0; width: 16px"> <a href=3D"https:/=
+/thetool.intercom-mail.com/via/e?ob=3D7dx%2BeQFK1201Sx67lkMjKf%2FTn1JiBSkLb=
+LDyLh3i7M0%3D&h=3D6c27d4f01824a09890dbf667c5af646517d1398c-23461377850&l=3D=
+5bf25b89e10993af1321b1fccd3350eb890168e1-1472067" target=3D"_blank" style=
+=3D"color: #1251ba">Apple App Store ASO Guide 2019</a><br><img src=3D"https=
+://thetool.intercom-mail.com/images/emojis/32x32/1f539.png" width=3D"16" he=
+ight=3D"16" alt=3D"small_blue_diamond" class=3D"ic_emoji_img" style=3D"heig=
+ht: 16px; margin: 0; max-width: 16px; min-height: 16px; padding: 0; width: =
+16px"> <a href=3D"https://thetool.intercom-mail.com/via/e?ob=3DHmjbnBuGlgrU=
+8E7o4ipZiLcS%2F7E0QD97zmJRxOalCVA%3D&h=3D60b013542997b1acfa20da6112f1bd2397=
+0e7585-23461377850&l=3Dcd11ca8cbf91aedd710cdf27b724e9cc65b3e537-1472068" ta=
+rget=3D"_blank" style=3D"color: #1251ba">Google Play ASO Guide 2019</a><br>=
+<img src=3D"https://thetool.intercom-mail.com/images/emojis/32x32/1f539.png=
+" width=3D"16" height=3D"16" alt=3D"small_blue_diamond" class=3D"ic_emoji_i=
+mg" style=3D"height: 16px; margin: 0; max-width: 16px; min-height: 16px; pa=
+dding: 0; width: 16px"> <a href=3D"https://thetool.intercom-mail.com/via/e?=
+ob=3DE5NP6ZhiVPkNOBd3R%2FXdm7moACaWKTTNzWenQaFVImo%3D&h=3Dd1d821a7b6c82c4a1=
+5bcd1998de136f97e03115d-23461377850&l=3Dba76abde271952e3ee701bfaf143520c38a=
+dd036-1472069" target=3D"_blank" style=3D"color: #1251ba">Meet the main ASO=
+ KPI's and Metrics</a><br><br>And please, if you have any feedback, don't h=
+esitate to get in touch by emailing me (<a href=3D"mailto:daniel@thetool.io=
+" target=3D"_blank" style=3D"color: #1251ba">daniel@thetool.io</a>) or hitt=
+ing reply <img src=3D"https://thetool.intercom-mail.com/images/emojis/32x32=
+/1f4aa.png" width=3D"16" height=3D"16" alt=3D"muscle" class=3D"ic_emoji_img=
+" style=3D"height: 16px; margin: 0; max-width: 16px; min-height: 16px; padd=
+ing: 0; width: 16px">=C2=A0</p>
+<p class=3D"intercom-align-left" style=3D"line-height: 1.5; margin: 0 0 17p=
+x; text-align: left !important" align=3D"left">Daniel Peris, CEO &amp; Foun=
+der at TheTool</p>
+                       =20
+
+                       =20
+                      </td>
+                    </tr>
+                   </tbody>
+</table>
+                  </td>
+                 </tr>
+                </tbody>
+</table>
+
+                <div class=3D"margin-arrow" style=3D"display: none; height:=
+ 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; visibility: =
+hidden; width: 0">
+                  <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" c=
+lass=3D"message_footer_table margin-arrow" align=3D"center" style=3D"border=
+-collapse: collapse; color: #545454; display: none; font-family: 'Helvetica=
+ Neue',Arial,sans-serif; font-size: 13px; height: 0; line-height: 20px; mar=
+gin: 0 auto; max-height: 0; max-width: 100%; opacity: 0; overflow: hidden; =
+visibility: hidden; width: 100%">
+                    <tbody>
+<tr>
+                      <td valign=3D"top" width=3D"80" class=3D"arrow-wrap" =
+style=3D"color: #272727; height: 18px; padding-left: 40px; text-align: left=
+" align=3D"left">
+                        <img alt=3D"Triangle" class=3D"image_fix" height=3D=
+"18" src=3D"https://thetool.intercom-mail.com/assets/email/personal/triangl=
+e-8747882e9ef8882f9bc057241fd3c049.png" style=3D"-ms-interpolation-mode: bi=
+cubic; display: inline-block; margin-top: -1px; max-width: 100%; outline: n=
+one; text-decoration: none" width=3D"40">
+                      </td>
+                    </tr>
+                  </tbody>
+</table>
+                </div>
+                <div class=3D"image-arrow">
+                  <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" c=
+lass=3D"message_footer_table image-arrow" align=3D"center" style=3D"border-=
+collapse: collapse; margin: 0 auto; max-width: 100%; width: 100%">
+                    <tbody>
+<tr>
+                      <td valign=3D"top" width=3D"100%">
+                        <img alt=3D"" src=3D"https://thetool.intercom-mail.=
+com/assets/email/personal/arrow-37f6774809df6fd083bfc98e9d562e23ca6ede618e2=
+b5e10c042de88d2f858dd.png" style=3D"max-width: 100%; width: 100%">
+                      </td>
+                    </tr>
+                  </tbody>
+</table>
+                </div>
+                <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" cla=
+ss=3D"message_footer_table" align=3D"center" style=3D"border-collapse: coll=
+apse; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif; font-=
+size: 13px; line-height: 20px; margin: 0 auto; max-width: 100%; width: 100%=
+">
+                  <tbody><tr>
+                  </tr></tbody>
+</table>
+<table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0">
+                      <tbody>
+<tr>
+                        <td width=3D"75%" class=3D"footer-td-wrapper">
+                          <table width=3D"100%" cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0" style=3D"border-collapse: collapse; color: #545454; f=
+ont-family: 'Helvetica Neue',Arial,sans-serif; font-size: 13px; line-height=
+: 20px; margin: 0 auto; max-width: 100%; width: 100%" class=3D"message_foot=
+er_table">
+                            <tbody>
+<tr>
+                              <td width=3D"40" class=3D"space">=C2=A0</td>
+                             =20
+  <td valign=3D"middle" width=3D"50" style=3D"color: #272727" align=3D"left=
+">
+    <img src=3D"https://thetool.intercom-mail.com/avatars/1780371/square_12=
+8/danielperis-1-1517496854.png?1517496854" height=3D"40" width=3D"40" class=
+=3D"avatar" alt=3D"intercomavatar" style=3D"-ms-interpolation-mode: bicubic=
+; -webkit-background-clip: padding-box; -webkit-border-radius: 20px; backgr=
+ound-clip: padding-box; border-radius: 20px; display: inline-block; height:=
+ 40px; max-width: 100%; outline: none; text-decoration: none; width: 40px">
+  </td>
+
+                              <td class=3D"admin_name" style=3D"color: #999=
+999">
+                                <b style=3D"color: #6f6f6f">Daniel</b> from=
+ TheTool
+
+                              </td>
+                            </tr>
+                          </tbody>
+</table>
+                        </td>
+                        <td width=3D"25%" class=3D"footer-td-wrapper">
+                          <table width=3D"100%" cellpadding=3D"0" cellspaci=
+ng=3D"0" border=3D"0" style=3D"border-collapse: collapse; color: #545454; f=
+ont-family: 'Helvetica Neue',Arial,sans-serif; font-size: 13px; line-height=
+: 20px; margin: 0 auto; max-width: 100%; width: 100%" class=3D"message_foot=
+er_table">
+                            <tbody>
+<tr>
+                              <td valign=3D"middle" align=3D"right" class=
+=3D"date_cell" style=3D"color: #999999; font-size: 11px; text-align: right"=
+>
+
+                               =20
+                                 =20
+                                    <a href=3D"https://thetool.intercom-mai=
+l.com/subscriptions/unsubscribe?app_id=3Dnt2yyt55&conversation_id=3D2346137=
+7850&user_id=3D5d68d978932b4e7a29e3a486" style=3D"color: #999999">Unsubscri=
+be from our emails</a>
+                                 =20
+                               =20
+                              </td>
+                            </tr>
+<tr>
+                          </tr>
+</tbody>
+</table>
+                        </td>
+                      </tr>
+                    </tbody>
+</table>
+                  </td>
+</tr>
+                </tbody>
+</table>
+              </td>
+            </tr>
+            <tr>
+              <td valign=3D"top" height=3D"20"></td>
+            </tr>
+          </tbody>
+</table>
+          <!--[if (gte mso 10)]>
+            </td>
+            </tr>
+            </table>
+          <![endif]-->
+       =20
+     =20
+   =20
+   =20
+        <table style=3D"background-color: #f9f9f9; border-collapse: collaps=
+e; color: #545454; font-family: 'Helvetica Neue',Arial,sans-serif; font-siz=
+e: 13px; letter-spacing: 0.02em; line-height: 20px; margin: 0 auto; max-wid=
+th: 100%; width: 100%" class=3D"powered-by-table" bgcolor=3D"#f9f9f9">
+          <tbody>
+<tr>
+            <td class=3D"powered-by-text" style=3D"color: #999999; font-siz=
+e: 11px; padding: 15px 0; text-align: center; width: 100%" align=3D"center"=
+>
+              Powered by <a href=3D"https://thetool.intercom-mail.com/via/e=
+?ob=3DyHULcuYRfyejmH5JM%2B9YYSzgFUpaA1yi%2FMbvQSYVwRwWhDlGwT%2BSJTKIi0LysWi=
+IRHFW4PFmZTT0290aTACf6r92O4S4KycKQgLTN5%2B2X%2BM%3D&h=3D9c23e8e6208055a27b2=
+f12775a24afe12f76ce43-23461377850" style=3D"color: #999; font-weight: bold;=
+ text-decoration: none">Intercom</a><br>
+            </td>
+          </tr>
+        </tbody>
+</table>
+   =20
+
+
+<img src=3D"https://thetool.intercom-mail.com/via/o?h=3D153ea692fb3bf2db3b7=
+26e37f0b6ea449690612d-23461377850" width=3D"1" height=3D"1" style=3D"displa=
+y: block;" alt=3D"intercom">
+
+<img border=3D"0" width=3D"1" height=3D"1" alt=3D"" src=3D"https://thetool.=
+intercom-mail.com/q/9K1r0egsVBU8yRyppFGMNQ~~/AAAAAQA~/RgRfS158PlcIaW50ZXJjb=
+21CCgAefNloXasm1hFSIWZyYW5jaXNjbytwcm9kdWN0b3Vyc0BwaWNrYXNvLmNvbVgEAACuKQ~~=
+">
+</body>
+</html>
+--_----fs2n9Zejark53516HS7jmw===_9B/11-09899-C79D86D5--
